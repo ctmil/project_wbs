@@ -242,7 +242,12 @@ class project(base_stage, osv.osv):
                 _complete_wbs_code_search_analytic, ['name', 'code',
                                                      'parent_id',
                                                      'complete_wbs_code'],
-                10)})
+                10)}),
+        'parent_id': fields.many2one('project.project',string='Parent Project',ondelete='restrict',store=True),
+        'parent_left': fields.integer('Parent Left',index=True),
+        'parent_right': fields.integer('Parent right',index=True),
+        'child_ids': fields.one2many('project.project','parent_id','Child projects')
+
     }
 
     _defaults = {
