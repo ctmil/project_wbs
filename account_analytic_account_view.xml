@@ -18,9 +18,9 @@
                         ('cancelled','close');blue:account_class ==
                         'work_package'</attribute>
                 </xpath>
-                <field name="complete_name" position="before">
+                <!-- field name="complete_name" position="before">
                     <field name="complete_wbs_code" string="WBS code"/>
-                </field>
+                </field -->
                 <field name="code" position="replace"/>
                 <field name="partner_id" position="after">
             		<field name="account_class" string="Class" attrs="{'invisible':[('type','not in',['contract','template'])]}"/>
