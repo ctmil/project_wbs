@@ -277,9 +277,9 @@ class AccountAnalyticAccount(base_stage, orm.Model):
             _child_unclassified_count, type='integer',
             string="Unclassified projects"),
 	'parent_id': fields.many2one('account.analytic.account',string='Parent Account',ondelete='restrict',store=True),
-	'parent_left': fields.Integer('Parent Left',index=True),
-	'parent_right': fields.Integer('Parent right',index=True),
-	'child_ids': fields.One2many('account.analytic.account','parent_id','Child accounts')
+	'parent_left': fields.integer('Parent Left',index=True),
+	'parent_right': fields.integer('Parent right',index=True),
+	'child_ids': fields.one2many('account.analytic.account','parent_id','Child accounts')
     }
 
     def _get_type_common(self, cr, uid, context):
