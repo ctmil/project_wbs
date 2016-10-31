@@ -81,9 +81,9 @@
             <field name="type">form</field>
             <field name="inherit_id" ref="project.edit_project"/>
             <field name="arch" type="xml">
-                <xpath expr='//label[@string="Project Name"]' position="attributes">
+                <!-- xpath expr='//label[@string="Project Name"]' position="attributes">
                     <attribute name="string">WBS element name</attribute>
-                </xpath>
+                </xpath -->
                 <xpath expr='//field[@name="parent_id"]' position="attributes">
                     <attribute name="on_change">on_change_parent(parent_id)</attribute>
                 </xpath>
