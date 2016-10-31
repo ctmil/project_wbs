@@ -32,7 +32,8 @@
             <field name="inherit_id" ref="project.view_project"/>
             <field name="field_parent">child_ids</field>
             <field name="arch" type="xml">
-                <xpath expr='//tree[@string="Projects"]' position="replace">
+                <!-- xpath expr='//tree[@string="Projects"]' position="replace" -->
+                <xpath expr='//tree[1]' position="replace">
                     <tree editable="top" string="WBS elements"
                           colors="grey:state in ('cancelled','done');blue:account_class == 'work_package'">
                         <field name="message_unread" invisible="1"/>
@@ -59,7 +60,7 @@
                         <field name="stage_id"/>
                         <field name="state" invisible="True"/>
                         <field name="child_ids" invisible="True"/>
-                        <field name="progress_rate" readonly="True"/>
+                        <!-- field name="progress_rate" readonly="True"/ -->
                     </tree>
                 </xpath>
             </field>
