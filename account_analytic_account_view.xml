@@ -3,14 +3,15 @@
     <data>
 
 #---------------------------------------------------------------------------------------------------------
-#   Extend the analytic account
+#   Extend the analytic account - analytic.view_account_analytic_account_list
 #---------------------------------------------------------------------------------------------------------
         <record id="view_account_analytic_account_list" model="ir.ui.view">
             <field name="name">account.analytic.account.list</field>
             <field name="model">account.analytic.account</field>
             <field name="type">tree</field>
             <field eval="8" name="priority"/>
-            <field name="inherit_id" ref="account.view_account_analytic_account_list"/>
+            <!-- field name="inherit_id" ref="account.view_account_analytic_account_list"/ -->
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_list"/>
             <field name="arch" type="xml">
                 <xpath expr="//tree" position="attributes">
                     <attribute name="colors">grey:state in
@@ -35,7 +36,8 @@
             <field name="name">account.analytic.account.search</field>
             <field name="model">account.analytic.account</field>
             <field name="type">search</field>
-            <field name="inherit_id" ref="account.view_account_analytic_account_search"/>
+            <!-- field name="inherit_id" ref="account.view_account_analytic_account_search"/ -->
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_search"/>
             <field name="arch" type="xml">
             	<field name="name" position="after">
             		<field name="complete_wbs_name" string="WBS name"/>
@@ -53,7 +55,8 @@
             <field name="model">account.analytic.account</field>
             <field name="type">tree</field>
             <field name="field_parent">child_complete_ids</field>
-            <field name="inherit_id" ref="account.view_account_analytic_account_tree"/>
+            <!-- field name="inherit_id" ref="account.view_account_analytic_account_tree"/ -->
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_tree"/>
             <field name="arch" type="xml">
                 <xpath expr="//tree" position="attributes">
                     <attribute name="colors">grey:state in
