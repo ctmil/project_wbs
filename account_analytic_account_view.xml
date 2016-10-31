@@ -13,12 +13,12 @@
             <!-- field name="inherit_id" ref="account.view_account_analytic_account_list"/ -->
             <field name="inherit_id" ref="analytic.view_account_analytic_account_list"/>
             <field name="arch" type="xml">
-                <xpath expr="//tree" position="attributes">
+                <!--xpath expr="//tree" position="attributes">
                     <attribute name="colors">grey:state in
                         ('cancelled','close');blue:account_class ==
                         'work_package'</attribute>
                 </xpath>
-                <!-- field name="complete_name" position="before">
+                <field name="complete_name" position="before">
                     <field name="complete_wbs_code" string="WBS code"/>
                 </field -->
                 <field name="code" position="replace"/>
@@ -50,12 +50,11 @@
             </field>
         </record>
 
-		<record id="view_account_analytic_account_tree" model="ir.ui.view">
+	<!-- record id="view_account_analytic_account_tree" model="ir.ui.view">
             <field name="name">account.analytic.account.tree</field>
             <field name="model">account.analytic.account</field>
             <field name="type">tree</field>
             <field name="field_parent">child_complete_ids</field>
-            <!-- field name="inherit_id" ref="account.view_account_analytic_account_tree"/ -->
             <field name="inherit_id" ref="analytic.view_account_analytic_account_tree"/>
             <field name="arch" type="xml">
                 <xpath expr="//tree" position="attributes">
@@ -69,7 +68,7 @@
                     <field name="stage_id"/>
             	</field>
             </field>
-        </record>
+        </record -->
 
         <record id="view_account_analytic_account_form" model="ir.ui.view">
             <field name="name">account.analytic.account.form</field>
@@ -81,7 +80,7 @@
             		<field name="account_class" string="Class"/>
                     <field name="project_analytic_account_id"
                            domain="[('account_class', '=', 'project')]"/>
-                    <field name="state" invisible="True"/>
+                    <!-- field name="state" invisible="True"/ -->
                     <field name="stage_id"/>
             		<field name="complete_wbs_code" string="WBS code" readonly="1"/>
             	</field>
