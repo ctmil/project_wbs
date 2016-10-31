@@ -429,9 +429,10 @@ class project(base_stage, osv.osv):
         }
         return view
 
-    def on_change_parent(self, cr, uid, ids, parent_id, context=None):
-        return self.pool.get('account.analytic.account').on_change_parent(
-            cr, uid, ids, parent_id)
+	
+    #def on_change_parent(self, cr, uid, ids, parent_id, context=None):
+    #    return self.pool.get('account.analytic.account').on_change_parent(
+    #        cr, uid, ids, parent_id)
 
     def write(self, cr, uid, ids, values, context=None):
         if context is None:
