@@ -83,10 +83,10 @@
             <field name="arch" type="xml">
                 <!-- xpath expr='//label[@string="Project Name"]' position="attributes">
                     <attribute name="string">WBS element name</attribute>
-                </xpath -->
+                </xpath>
                 <xpath expr='//field[@name="parent_id"]' position="attributes">
                     <attribute name="on_change">on_change_parent(parent_id)</attribute>
-                </xpath>
+                </xpath -->
                 <xpath expr='//field[@name="state"]' position="attributes">
                     <attribute name="invisible">True</attribute>
                 </xpath>
@@ -97,8 +97,9 @@
 					<group string="Project configuration">
 						<group>
 							<field name="account_class" string="Class"/>
-                            <field name="project_analytic_account_id"
-                                   domain="[('account_class', '=', 'project')]"/>
+				                        <field name="project_analytic_account_id"
+				                                   domain="[('account_class', '=', 'project')]"/>
+							<field name="parent_id" onchange="on_change_parent(parent_id)" />
 						</group>
 						<group>
 							<field name="code" string="Code"/>
