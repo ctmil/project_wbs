@@ -279,7 +279,9 @@ class AccountAnalyticAccount(base_stage, orm.Model):
 	'parent_id': fields.many2one('account.analytic.account',string='Parent Account',ondelete='restrict',store=True),
 	'parent_left': fields.integer('Parent Left',index=True),
 	'parent_right': fields.integer('Parent right',index=True),
-	'child_ids': fields.one2many('account.analytic.account','parent_id','Child accounts')
+	'child_ids': fields.one2many('account.analytic.account','parent_id','Child accounts'),
+        'state': fields.selection([('template', 'Template'),('draft','New'),('open','In Progress'),('pending','To Renew'),('close','Closed'),('cancelled', 'Cancelled')], 'Status', required=True, track_visibility='onchange'),
+
     }
 
     def _get_type_common(self, cr, uid, context):
