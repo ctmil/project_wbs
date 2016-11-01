@@ -52,7 +52,6 @@
                         <field name="complete_wbs_code" string="Code"/>
                         <field name="wbs_indent"/>
                         <field name="name" string="Name"/>
-                        <!-- field name="parent_id" string="Parent"/ -->
                         <field name="parent_id" on_change="on_change_parent(parent_id)" string="Parent"/>
                         <field name="account_class" string="Class"/>
                         <field name="user_id"/>
@@ -85,9 +84,9 @@
                 <!-- xpath expr='//label[@string="Project Name"]' position="attributes">
                     <attribute name="string">WBS element name</attribute>
                 </xpath -->
-                <!-- xpath expr='//field[@name="parent_id"]' position="attributes">
+                <xpath expr='//field[@name="parent_id"]' position="attributes">
                     <attribute name="on_change">on_change_parent(parent_id)</attribute>
-                </xpath -->
+                </xpath>
                 <xpath expr='//field[@name="state"]' position="attributes">
                     <attribute name="invisible">True</attribute>
                 </xpath>
