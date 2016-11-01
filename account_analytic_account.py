@@ -424,3 +424,18 @@ class AccountAnalyticAccount(base_stage, orm.Model):
                     project_obj.set_open(cr, uid, project_ids,
                                          context=context)
         return res
+
+    def on_change_parent(self, cr, uid, id, parent_id):
+        if not parent_id:
+            return {}
+        parent = self.read(cr, uid, [parent_id], ['partner_id','code'])[0]
+        if parent['partner_id']:
+            partner = parent['partner_id'][0]
+        else:
+            partner = False
+        res = {'value': {}}
+        if partner:
+            res['value']['partner_id'] = partner
+        return res
+
+
