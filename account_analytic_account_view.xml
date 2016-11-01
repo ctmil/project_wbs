@@ -27,6 +27,7 @@
                     <field name="project_analytic_account_id"
                            attrs="{'invisible':[('type','not in',['contract','template'])]}"
                            domain="[('account_class', '=', 'project')]"/>
+                    <field name="parent_id"/>
                     <field name="stage_id"/>
             	</field>
             </field>
