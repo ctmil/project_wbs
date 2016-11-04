@@ -24,5 +24,5 @@ class project_project(http.Controller):
 		        values = {
 		        }
 
-	        return request.website.render('project_wbs.project', values)
+		        return request.website.render('project_wbs.project', values)
 
