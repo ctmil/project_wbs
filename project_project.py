@@ -33,6 +33,17 @@ class project(base_stage, osv.osv):
     _inherit = "project.project"
     _description = "WBS element"
 
+
+    def open_project(self, cr, uid, project_id, context=None):
+        project = self.browse(cr, uid, project_id[0], context=context)
+        return {
+            'type': 'ir.actions.act_url',
+            # 'target': 'self',
+            'target': '_blank',
+            'url': '/project/%s' % (project.id)
+        }
+
+
     def _get_project_analytic_wbs(self, cr, uid, ids, context=None):
 
         result = {}
