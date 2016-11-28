@@ -18,11 +18,11 @@ class project_project(http.Controller):
 	        return self.view(*args, **kwargs)
 
 	@http.route("/project/<int:project_id>/<token>", type='http', auth="public", website=True)
-		def view(self, order_id, pdf=None, token=None, message=False, **post):
-		        # use SUPERUSER_ID allow to access/view order for public user
-		        # only if he knows the private token
-		        values = {
-		        }
+	def view(self, order_id, pdf=None, token=None, message=False, **post):
+	        # use SUPERUSER_ID allow to access/view order for public user
+	        # only if he knows the private token
+	        values = {
+	        }
 
-		        return request.website.render('project_wbs.project', values)
+	        return request.website.render('project_wbs.project', values)
 
