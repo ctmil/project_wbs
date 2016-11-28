@@ -114,6 +114,9 @@
                               string="Create child WBS element"
                               type="action"
                               context="{'default_parent_id': analytic_account_id,'default_partner_id': partner_id,'default_user_id': user_id}"/>
+                            <button name="show_hierarchy"
+                              string="Mostrar jerarquia"
+                              type="object" icon="fa-icon-sitemap" />
                         </group>
                         <group>
                             <field name="project_child_complete_ids"/>
