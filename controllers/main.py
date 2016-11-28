@@ -15,12 +15,8 @@ from openerp.addons.website_mail.controllers.main import _message_post_helper
 class project_project(http.Controller):
 	@http.route("/project/<int:project_id>", type='http', auth="user", website=True)
 	def view_project(self, *args, **kwargs):
-		import pdb;pdb.set_trace()
-	        #return self.view(*args, **kwargs)
-	        values = {
-	        }
+        	return self.view(*args, **kwargs)
 
-	        return request.website.render('project_wbs.project_wbs', values)
 
 
 	@http.route("/project/<int:project_id>/<token>", type='http', auth="public", website=True)
