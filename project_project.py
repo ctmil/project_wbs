@@ -34,7 +34,7 @@ class project(base_stage, osv.osv):
     _description = "WBS element"
 
 
-    def open_project(self, cr, uid, project_id, context=None):
+    def show_project(self, cr, uid, project_id, context=None):
         project = self.browse(cr, uid, project_id[0], context=context)
         return {
             'type': 'ir.actions.act_url',

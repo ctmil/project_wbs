@@ -46,6 +46,8 @@
         "analytic_account_stage_view.xml",
         "account_analytic_account_view.xml",
         "project_project_view.xml",
+	"website_project.xml",
+	"website_project.xml",
         "security/ir.model.access.csv",
     ],
     'demo_xml': [
