@@ -28,7 +28,7 @@ var tree = d3.layout.tree()
 var diagonal = d3.svg.diagonal()
     .projection(function(d) { return [d.y, d.x]; });
 
-var svg = d3.select("body").append("svg")
+var svg = d3.select(".projects").append("svg")
     .attr("width", width + margin.left + margin.right)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
@@ -39,11 +39,13 @@ d3.json("/project_wbs/static/src/js/flare.json", function(error, flare) {
   flare.x0 = 0;
   flare.y0 = 0;
   update(root = flare);
+  console.log('Cargo sin problemas');
 });
 
 function update(source) {
 
   // Compute the flattened node list. TODO use d3.layout.hierarchy.
+  console.log('Entro a update');
   var nodes = tree.nodes(root);
 
   var height = Math.max(500, nodes.length * barHeight + margin.top + margin.bottom);
