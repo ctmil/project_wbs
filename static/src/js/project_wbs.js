@@ -33,7 +33,7 @@ var svg = d3.select("body").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.json("flare.json", function(error, flare) {
+d3.json("/project_wbs/static/src/js/flare.json", function(error, flare) {
   if (error) throw error;
 
   flare.x0 = 0;
