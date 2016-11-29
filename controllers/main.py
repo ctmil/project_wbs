@@ -37,4 +37,6 @@ class project_project(http.Controller):
 		project_id = kwargs.get('project_id',None)
 		if project_id:
 			records = request.env['project.project'].sudo().search([('id','=',project_id)])
-			return records.read(['name'])
+			result_value = records.read(['name'])
+			del result_value[0]['id']
+			return result_value
