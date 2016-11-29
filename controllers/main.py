@@ -33,6 +33,8 @@ class project_project(http.Controller):
 	        return request.website.render('project_wbs.project_wbs', values)
 
 	@http.route("/project/<int:project_id>/json", type='json', auth="none")
-	def view_project_json(self):
-		records = request.env['project.project'].sudo().search([])
-		return records.read(['name'])
+	def view_project_json(self,*args,**kwargs):
+		project_id = kwargs.get('project_id',None)
+		if project_id:
+			records = request.env['project.project'].sudo().search([('id','=',project_id)])
+			return records.read(['name'])
