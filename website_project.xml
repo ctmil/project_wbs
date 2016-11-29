@@ -15,6 +15,9 @@
         <body data-spy="scroll" data-target=".navspy" data-offset="50">
             <div class="container">
 		<h1>Hola mundo</h1>
+		<div class="row">
+			<span t-field="project.name"></span>
+		</div>
             </div>
         </body>
       </t>
