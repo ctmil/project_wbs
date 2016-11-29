@@ -6,6 +6,7 @@
     <xpath expr="." position="inside">
 	<script type="text/javascript" src="/project_wbs/static/src/js/project_wbs.js"></script>
 	<script src="https://d3js.org/d3.v4.min.js"></script>
+        <link rel='stylesheet' href='/project_wbs/static/src/css/project_wbs.css'/>
     </xpath>
   </template>
 
