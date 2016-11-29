@@ -18,6 +18,8 @@
 		<div class="row">
 			<span t-field="project.name"></span>
 		</div>
+		<div class="projects">
+		</div>
             </div>
         </body>
       </t>

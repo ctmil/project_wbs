@@ -9,7 +9,7 @@ var website = require('website.website');
 
 console.log('Hola mundo');
 
-var svgContainer = d3.select(".container").append("svg").attr("width", 200).attr("height", 200);
+var svgContainer = d3.select(".projects").append("svg").attr("width", 200).attr("height", 200);
 var rectangle = svgContainer.append("rect").attr("x", 10).attr("y", 10).attr("width", 50).attr("height", 100);
 
 });
