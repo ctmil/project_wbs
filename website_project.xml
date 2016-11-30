@@ -13,8 +13,6 @@
             <link rel="stylesheet" href="/web/static/lib/jquery.textext/jquery.textext.css"/>
             <script type="text/javascript" src="/web/static/lib/jquery.textext/jquery.textext.js"></script>
 
-            <t t-call="web.bootstrap"/>
-
             <link rel="stylesheet" href="/web/static/lib/jquery.ui.notify/css/ui.notify.css"/>
             <script type="text/javascript" src="/web/static/lib/jquery.ui.notify/js/jquery.notify.js"></script>
 
