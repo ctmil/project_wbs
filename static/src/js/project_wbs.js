@@ -9,7 +9,14 @@ var Widget = require('web.Widget');
 var website = require('website.website');
 
 console.log('Hola mundo');
-
+var Projects = new Model('project.project');
+Projects.query(['name'])
+     .filter([['company_id', '=', 1]])
+     .limit(15)
+     .all().then(function (projects) {
+	console.log(projects);
+    // do work with users records
+});
 //var svgContainer = d3.select(".projects").append("svg").attr("width", 200).attr("height", 200);
 //var rectangle = svgContainer.append("rect").attr("x", 10).attr("y", 10).attr("width", 50).attr("height", 100);
 
@@ -34,8 +41,8 @@ var svg = d3.select(".projects").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-// d3.json("/project_wbs/static/src/js/flare.json", function(error, flare) {
-d3.json("/project/8/json", function(error, flare) {
+d3.json("/project_wbs/static/src/js/flare.json", function(error, flare) {
+// d3.json("/project/8/json", function(error, flare) {
   if (error) throw error;
 
   flare.x0 = 0;
