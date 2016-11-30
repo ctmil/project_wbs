@@ -7,6 +7,9 @@
 	<script type="text/javascript" src="/project_wbs/static/src/js/project_wbs.js"></script>
 	<script src="https://d3js.org/d3.v3.min.js"></script>
         <link rel='stylesheet' href='/project_wbs/static/src/css/project_wbs.css'/>
+        <script type="text/javascript" src="/web/static/src/js/framework/data.js"></script>
+        <script type="text/javascript" src="/web/static/src/js/framework/data_model.js"></script>
+        <script type="text/javascript" src="/web/static/src/js/framework/pyeval.js"></script>
     </xpath>
   </template>
 
@@ -17,6 +20,7 @@
 		<h1>Hola mundo</h1>
 		<div class="row">
 			<span t-field="project.name"></span>
+			<span t-field="project.id"></span>
 		</div>
 		<div class="projects">
 		</div>

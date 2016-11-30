@@ -2,6 +2,7 @@
 odoo.define('project_wbs.project_wbs', function (require) {
 'use strict';
 
+var Model = require('web.DataModel');
 var ajax = require('web.ajax');
 var config = require('web.config');
 var Widget = require('web.Widget');
@@ -33,7 +34,8 @@ var svg = d3.select(".projects").append("svg")
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-d3.json("/project_wbs/static/src/js/flare.json", function(error, flare) {
+// d3.json("/project_wbs/static/src/js/flare.json", function(error, flare) {
+d3.json("/project/8/json", function(error, flare) {
   if (error) throw error;
 
   flare.x0 = 0;
