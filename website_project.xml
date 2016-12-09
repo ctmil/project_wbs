@@ -57,7 +57,7 @@
 		<h1>Hola mundo</h1>
 		<div class="row">
 			<span t-field="project.name"></span>
-			<span t-field="project.id"></span>
+			<span t-field="project.id" id="project_id" invisible="1"></span>
 		</div>
 		<div class="projects">
 		</div>
