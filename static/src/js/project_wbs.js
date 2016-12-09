@@ -9,10 +9,14 @@ var Widget = require('web.Widget');
 var website = require('website.website');
 
 var Projects = new Model('project.project');
+
+var project_id = parseInt($('#project_id').text());
+var projects = null;
 Projects.query(['name'])
-     .filter([['company_id', '=', 1],['parent_id','=',null]])
-	     .all().then(function (projects) {
-			console.log(projects);
+     .filter([['id', '=', project_id ]])
+	     .all().then(function (project_data) {
+			console.log(project_data);
+			projects = {'name': project_data.name, children = []};
 			// do work with users records
 		});
 //var svgContainer = d3.select(".projects").append("svg").attr("width", 200).attr("height", 200);
@@ -46,7 +50,8 @@ d3.json("/project_wbs/static/src/js/flare.json", function(error, flare) {
   //flare = {name: "Proyecto 1", children: [], x0: 0, y0: 0}
   flare.x0 = 0;
   flare.y0 = 0;
-  update(root = flare);
+  update(root = projects);
+  // update(root = flare);
   console.log(flare);
   console.log('Cargo sin problemas');
 });
