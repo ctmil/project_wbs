@@ -15,10 +15,12 @@ var projects = null;
 Projects.query(['name'])
      .filter([['id', '=', project_id ]])
 	     .all().then(function (project_data) {
-			console.log(project_data);
-			projects = {'name': project_data.name, children = []};
+			projects = {"name": project_data[0].name, "children": null};
 			// do work with users records
 		});
+
+console.log('Projects');
+console.log(projects);
 //var svgContainer = d3.select(".projects").append("svg").attr("width", 200).attr("height", 200);
 //var rectangle = svgContainer.append("rect").attr("x", 10).attr("y", 10).attr("width", 50).attr("height", 100);
 
