@@ -21,24 +21,27 @@ Projects.query(['name'])
 			// do work with users records
 		});
 
+var children = null;
 var get_children = function (project_id, project_name) {
-	Projects.query(['name','parent_id'])
-		.filter([['parent_id', '=', project_id]])
-		.all().then(function (project_data) {
-			_.each(project_data, function(project_data) {
-				if (project_data.length > 0) {
-					console.log('Dentro');
+	if Projects.query(['name','parent_id'])
+		.filter([['parent_id', '=', project_id]]).count() > 0 {
+		Projects.query(['name','parent_id'])
+			.filter([['parent_id', '=', project_id]])
+			.all().then(function (project_data) {
+				_.each(project_data, function(project_data) {
+					console.log('Dentro #2');
 					console.log(project_data.id);
 					project_id = project_data.id;
 					project_name = project_data.name;
 					children = get_children(project_id,project_name);
-				} else {
-					console.log('Proyecto hijo');
-					console.log(project_name);
-					}
+					});
 				});
-			});
-};
+		} else {
+			console.log('Proyecto hijo');
+			console.log(project_name);
+			return project_name;
+		}
+	};
 
 console.log(get_children(project_id));
 
