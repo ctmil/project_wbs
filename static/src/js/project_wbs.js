@@ -19,8 +19,17 @@ Projects.query(['name'])
 			// do work with users records
 		});
 
-console.log('Projects');
-console.log(projects);
+var get_children = function (project_id) {
+	Projects.query(['name','parent_id'])
+		.filter([['parent_id', '=', project_id]])
+		.all().then(function (project_data) {
+			console.log('Proyecto hijo');
+			console.log(project_data[0].name);
+			});
+};
+
+console.log(get_children(project_id));
+
 //var svgContainer = d3.select(".projects").append("svg").attr("width", 200).attr("height", 200);
 //var rectangle = svgContainer.append("rect").attr("x", 10).attr("y", 10).attr("width", 50).attr("height", 100);
 
