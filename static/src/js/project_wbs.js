@@ -16,15 +16,22 @@ Projects.query(['name'])
      .filter([['id', '=', project_id ]])
 	     .all().then(function (project_data) {
 			projects = {"name": project_data[0].name, "children": null};
+			project_name = project_data[0].name;
 			// do work with users records
 		});
 
-var get_children = function (project_id) {
+var get_children = function (project_id, project_name) {
 	Projects.query(['name','parent_id'])
 		.filter([['parent_id', '=', project_id]])
 		.all().then(function (project_data) {
-			console.log('Proyecto hijo');
-			console.log(project_data[0].name);
+			if (project_data.length > 0) {
+				project_id = project_data[0].id;
+				project_name = project_data[0].name;
+				children = get_children(project_id,project_name);
+			} else {
+				console.log('Proyecto hijo');
+				console.log(project_name);
+				}
 			});
 };
 
