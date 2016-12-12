@@ -12,6 +12,7 @@ var Projects = new Model('project.project');
 
 var project_id = parseInt($('#project_id').text());
 var projects = null;
+var project_name = 'N/A';
 Projects.query(['name'])
      .filter([['id', '=', project_id ]])
 	     .all().then(function (project_data) {
@@ -24,10 +25,12 @@ var get_children = function (project_id, project_name) {
 	Projects.query(['name','parent_id'])
 		.filter([['parent_id', '=', project_id]])
 		.all().then(function (project_data) {
-			_.each(project_data, function(item) {
-				if (item.length > 0) {
-					project_id = item.id;
-					project_name = item.name;
+			_.each(project_data, function(project_data) {
+				if (project_data.length > 0) {
+					console.log('Dentro');
+					console.log(project_data.id);
+					project_id = project_data.id;
+					project_name = project_data.name;
 					children = get_children(project_id,project_name);
 				} else {
 					console.log('Proyecto hijo');
@@ -79,7 +82,7 @@ d3.json("/project_wbs/static/src/js/flare.json", function(error, flare) {
 function update(source) {
 
   // Compute the flattened node list. TODO use d3.layout.hierarchy.
-  console.log('Entro a update');
+  // console.log('Entro a update');
   var nodes = tree.nodes(root);
 
   var height = Math.max(500, nodes.length * barHeight + margin.top + margin.bottom);
