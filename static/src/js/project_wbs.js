@@ -13,18 +13,31 @@ var Projects = new Model('project.project');
 var project_id = parseInt($('#project_id').text());
 var projects = null;
 var project_name = 'N/A';
+console.log('Antes de consultar odoo');
 Projects.query(['id','name','child_ids'])
      .filter([['id', '=', project_id ]])
 	     .all().then(function (project_data) {
 			_.each(project_data, function(project_data) {
 			project_id = project_data.id;
 			project_name = project_data.name;
-			console.log('Child ids');
-			console.log(project_data.child_ids);
-			projects = {"name": project_data[0].name, "children": null};
-			project_name = project_data[0].name;
+			if (!project_data.child_ids) {
+				projects = {"name": project_data.name, "children": null};
+				}
+			else {
+				console.log('Child ids');
+				console.log(project_data.child_ids[0]);
+				Projects.query(['name'])
+					.filter([['id','=',project_data.child_ids[0]]])
+					.all().then(function (child_data) {
+						projects = {"name": project_data.name, "children": [{"name": child_data[0].name, "children": null}]};
+						console.log('Projects');
+						console.log(projects);
+						  update(root = projects);
+						});
+				}
 			// do work with users records
 		});
+	});
 
 // var get_children = function (project_id, project_name) {
 //function get_children(project_id, project_name) {
@@ -58,8 +71,8 @@ Projects.query(['id','name','child_ids'])
 //children = get_children(project_id);
 //console.log('After function');
 //console.log(children);
-var svgContainer = d3.select(".projects").append("svg").attr("width", 200).attr("height", 200);
-var rectangle = svgContainer.append("rect").attr("x", 10).attr("y", 10).attr("width", 50).attr("height", 100);
+//var svgContainer = d3.select(".projects").append("svg").attr("width", 200).attr("height", 200);
+//var rectangle = svgContainer.append("rect").attr("x", 10).attr("y", 10).attr("width", 50).attr("height", 100);
 
 
 var margin = {top: 30, right: 20, bottom: 30, left: 20},
@@ -92,7 +105,6 @@ d3.json("/project_wbs/static/src/js/flare.json", function(error, flare) {
   update(root = projects);
   // update(root = flare);
   console.log(flare);
-  console.log('Cargo sin problemas');
 });
 
 function update(source) {
