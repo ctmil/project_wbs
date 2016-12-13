@@ -13,46 +13,53 @@ var Projects = new Model('project.project');
 var project_id = parseInt($('#project_id').text());
 var projects = null;
 var project_name = 'N/A';
-Projects.query(['name'])
+Projects.query(['id','name','child_ids'])
      .filter([['id', '=', project_id ]])
 	     .all().then(function (project_data) {
+			_.each(project_data, function(project_data) {
+			project_id = project_data.id;
+			project_name = project_data.name;
+			console.log('Child ids');
+			console.log(project_data.child_ids);
 			projects = {"name": project_data[0].name, "children": null};
 			project_name = project_data[0].name;
 			// do work with users records
 		});
 
-var children = null;
-var get_children = function (project_id, project_name) {
-	Projects.query(['name','parent_id']).
-		filter([['parent_id', '=', project_id]]).count().then(function (item) {
-			console.log('Cantidad');
-			console.log(item);
-			if (item > 0) {
-				Projects.query(['name','parent_id'])
-					.filter([['parent_id', '=', project_id]])
-					.all().then(function (project_data) {
-						_.each(project_data, function(project_data) {
-							project_id = project_data.id;
-							project_name = project_data.name;
-							children = get_children(project_id,project_name);
-						}); //each
-					});
-				} // end item > 0
-			else {
-				var return_value = [{'name': project_name, children: null}];
-				// return project_name;
-				console.log('Retorno');
-				console.log(return_value);
-				return return_value;
-				}
-			}); // end count.then
-	}; // end function get_children
+// var get_children = function (project_id, project_name) {
+//function get_children(project_id, project_name) {
+//	Projects.query(['name','parent_id']).
+//		filter([['parent_id', '=', project_id]]).count().then(function (item) {
+//			console.log('Cantidad');
+//			console.log(item);
+//			if (item > 0) {
+//				Projects.query(['name','parent_id'])
+//					.filter([['parent_id', '=', project_id]])
+//					.all().then(function (project_data) {
+//						_.each(project_data, function(project_data) {
+//							project_id = project_data.id;
+//							project_name = project_data.name;
+//							children = get_children(project_id,project_name);
+//						}); //each
+//					});
+//				} // end item > 0
+//			else {
+//				// var return_value = [{'name': project_name, children: null}];
+//				var return_value = [{'name': 'ABC', children: null}];
+//				// return project_name;
+//				console.log('Retorno');
+//				console.log(return_value);
+//				return return_value;
+//				}
+//			}); // end count.then
+//	}; // end function get_children
 
-console.log(get_children(project_id));
-projects.children = get_children(project_id);
-
-//var svgContainer = d3.select(".projects").append("svg").attr("width", 200).attr("height", 200);
-//var rectangle = svgContainer.append("rect").attr("x", 10).attr("y", 10).attr("width", 50).attr("height", 100);
+// console.log(get_children(project_id));
+//children = get_children(project_id);
+//console.log('After function');
+//console.log(children);
+var svgContainer = d3.select(".projects").append("svg").attr("width", 200).attr("height", 200);
+var rectangle = svgContainer.append("rect").attr("x", 10).attr("y", 10).attr("width", 50).attr("height", 100);
 
 
 var margin = {top: 30, right: 20, bottom: 30, left: 20},
