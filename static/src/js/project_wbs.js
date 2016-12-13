@@ -39,7 +39,9 @@ var get_children = function (project_id, project_name) {
 					});
 				} // end item > 0
 			else {
-				console.log('Proyecto hijo');
+				return_value = [{'name': project_name, children: null}];
+				// return project_name;
+				console.log('Retorno');
 				console.log(project_name);
 				return project_name;
 				}
@@ -47,6 +49,7 @@ var get_children = function (project_id, project_name) {
 	}; // end function get_children
 
 console.log(get_children(project_id));
+projects.children = get_children(project_id);
 
 //var svgContainer = d3.select(".projects").append("svg").attr("width", 200).attr("height", 200);
 //var rectangle = svgContainer.append("rect").attr("x", 10).attr("y", 10).attr("width", 50).attr("height", 100);
