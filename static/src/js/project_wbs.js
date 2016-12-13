@@ -39,11 +39,11 @@ var get_children = function (project_id, project_name) {
 					});
 				} // end item > 0
 			else {
-				return_value = [{'name': project_name, children: null}];
+				var return_value = [{'name': project_name, children: null}];
 				// return project_name;
 				console.log('Retorno');
-				console.log(project_name);
-				return project_name;
+				console.log(return_value);
+				return return_value;
 				}
 			}); // end count.then
 	}; // end function get_children
