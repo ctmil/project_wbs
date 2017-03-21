@@ -135,15 +135,18 @@ class project(base_stage, osv.osv):
         return res
 
     def _child_compute(self, cr, uid, ids, name, arg, context=None):
-
         result = {}
         if context is None:
             context = {}
 
         for project_item in self.browse(cr, uid, ids, context=context):
+            #child_ids = self.search(
+            #    cr, uid, [('parent_id', '=',
+            #               project_item.analytic_account_id.id)],
+            #    context=context)
             child_ids = self.search(
                 cr, uid, [('parent_id', '=',
-                           project_item.analytic_account_id.id)],
+                           project_item.id)],
                 context=context)
 
             result[project_item.id] = child_ids
