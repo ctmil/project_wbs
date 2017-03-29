@@ -2,13 +2,13 @@
 odoo.define('project_wbs.project_wbs', function (require) {
 
 'use strict';
-var Model = require('web.DataModel');
-var ajax = require('web.ajax');
-var config = require('web.config');
-var Widget = require('web.Widget');
-var website = require('website.website');
-var id_generic = parseInt($('#project_id').text());
-var treeGlobal = [];
+  var Model = require('web.DataModel');
+  var ajax = require('web.ajax');
+  var config = require('web.config');
+  var Widget = require('web.Widget');
+  var website = require('website.website');
+  var id_generic = parseInt($('#project_id').text());
+  var treeGlobal = [];
 
   function scan(id, callback){
     var Projects = new Model('project.project');
@@ -60,8 +60,19 @@ var treeGlobal = [];
   }
 
   scan(id_generic, function(tree){
-    update(root = tree);
+    var c = countS(tree);
+    var millis = c*50;
+    setTimeout(function(){ update(root = tree); }, millis);
   });
+
+  function countS(data) {
+    var c = 0;
+    for (var i in data) {
+      if (typeof data[i] == 'object') c += countS(data[i]);
+      if (typeof data[i] == 'string') c += 1
+    }
+    return c;
+  }
 
   // *********************************************************
   var margin = {top: 20, right: 120, bottom: 20, left: 120},
